@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>{{title}}</title>
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="/static/assets/styles/style.min.css">
+	
+	<!-- Material Design Icon -->
+	<link rel="stylesheet" href="/static/assets/fonts/material-design/css/materialdesignicons.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="/static/assets/plugin/waves/waves.min.css">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="/static/assets/plugin/sweet-alert/sweetalert.css">
+	
+	<!-- Data Tables -->
+	<link rel="stylesheet" href="/static/assets/plugin/datatables/media/css/dataTables.bootstrap.min.css">
+	<link rel="stylesheet" href="/static/assets/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css">
+
+</head>
+
+<body>
+<div class="main-menu">
+	<header class="header">
+		<a href="/" class="logo"><i class="ico mdi mdi-cube-outline"></i>{{header}}</a>
+		<button type="button" class="button-close fa fa-times js__menu_close"></button>
+		<div class="user">
+			<a href="#" class="avatar"><img height="30px" width="60px" src="/static/assets/images/police2.jpg" alt=""><span class="status online"></span></a>
+			<h5 class="name"><a href="\">IM Smart</a></h5>
+			<h5 class="position">User</h5>
+			<!-- /.name -->
+						<!-- /.control-wrap -->
+		</div>
+		<!-- /.user -->
+	</header>
+	<!-- /.header -->
+	<div class="content">
+
+		<div class="navigation">
+			<h5 class="title">Navigation</h5>
+			<!-- /.title -->
+			<ul class="menu js__accordion">
+				<li >
+					<a class="waves-effect" href="/"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+				</li>
+				<li>
+					<a class="waves-effect " href="/addnew"><i class="menu-icon mdi mdi-desktop-mac"></i><span>Add Item</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				<li class="current">
+					<a class="waves-effect " href="/stocktable"><i class="menu-icon mdi mdi-cube-outline"></i><span>Stock Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li>
+					<a class="waves-effect" href="/issueregister"><i class="menu-icon mdi mdi-cube-outline"></i><span>Issued Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li>
+					<a class="waves-effect" href="/loadchart"><i class="menu-icon mdi mdi-calendar"></i><span>Load Chart</span></a>
+				</li>
+				
+				
+			</ul>
+			
+		</div>
+		<!-- /.navigation -->
+	</div>
+	<!-- /.content -->
+</div>
+<!-- /.main-menu -->
+
+<div class="fixed-navbar">
+	<div class="pull-left">
+		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+		<h1 class="page-title">{{htitle}}</h1>
+		<!-- /.page-title -->
+	</div>
+	<!-- /.pull-left -->
+	<div class="pull-right">
+		
+		<!-- /.ico-item -->
+		
+		<a href="/logout" class="ico-item mdi mdi-logout "></a>
+	</div>
+	<!-- /.pull-right -->
+</div>
+<div id="wrapper">
+	<div class="main-content">
+		<div class="row small-spacing">
+			<div class="col-xs-12">
+				
+			<!-- /.col-xs-12 -->
+			<div class="col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title">Stock Register</h4>
+					<!-- /.box-title -->
+					{% if messages %}
+                      {% for message in messages %}
+                      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+                    {% endfor %}
+                    {% endif %}
+					<!-- /.dropdown js__dropdown -->
+					<table id="example-scroll-y" class="table table-striped table-bordered display" style="width:100%">
+						<thead>
+							<tr>
+								<th>S.No.</th>
+								<th>Material No.</th>
+								<th>Nomenclature</th>
+								<th>Quantity Recived</th>
+								<th>Weight/Unit</th>
+								<th>Sub Depot</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+
+						<tbody>
+						{% for x in stocks %}
+							<tr>
+								<td>{{ forloop.counter}}</td>
+								<td>{{x.materialno}}</td>
+								<td>{{x.nomenclature}}</td>
+								<td>{{x.quantityrecieved}}</td>
+								<td>{{x.wtratio}}</td>
+								<td>{{x.subdepot}}</td>
+								<td><a href="/issueaction/{{x.materialno}}"><button type="button" class="btn btn-success btn-xs waves-effect waves-light">Issue</button> </a></td>
+							</tr>
+						{% endfor %}
+
+
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+							
+						</tbody>
+					</table>
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-xs-12 -->
+
+			
+			<!-- /.col-xs-12 -->
+		</div>
+		<!-- /.row small-spacing -->		
+		
+	</div>
+	<!-- /.main-content -->
+</div><!--/#wrapper -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="/static/assets/script/html5shiv.min.js"></script>
+		<script src="/static/assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/assets/scripts/jquery.min.js"></script>
+	<script src="/static/assets/scripts/modernizr.min.js"></script>
+	<script src="/static/assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="/static/assets/plugin/nprogress/nprogress.js"></script>
+	<script src="/static/assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="/static/assets/plugin/waves/waves.min.js"></script>
+
+	<!-- Data Tables -->
+	<script src="/static/assets/plugin/datatables/media/js/jquery.dataTables.min.js"></script>
+	<script src="/static/assets/plugin/datatables/media/js/dataTables.bootstrap.min.js"></script>
+	<script src="/static/assets/plugin/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
+	<script src="/static/assets/plugin/datatables/extensions/Responsive/js/responsive.bootstrap.min.js"></script>
+	<script src="/static/assets/scripts/datatables.demo.min.js"></script>
+
+	<script src="/static/assets/scripts/main.min.js"></script>
+</body>
+</html>

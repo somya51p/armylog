@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Add New Item</title>
+     
+	 <script src="/static/assets/myjs.js"></script>
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="/static/assets/styles/style.min.css">
+	
+	<!-- Material Design Icon -->
+	<link rel="stylesheet" href="/static/assets/fonts/material-design/css/materialdesignicons.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="/static/assets/plugin/waves/waves.min.css">
+
+	<!-- Datepicker -->
+	<link rel="stylesheet" href="/static/assets/plugin/datepicker/css/bootstrap-datepicker.min.css">
+
+<link rel="stylesheet" href="/static/assets/plugin/modal/remodal/remodal.css">
+	<link rel="stylesheet" href="/static/assets/plugin/modal/remodal/remodal-default-theme.css">
+
+	
+	<script src="https://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript">
+
+function confSubmit(form) {
+if (confirm("Are you sure to  add this material")) {
+form.submit();
+}
+
+else {
+alert("You decided to not submit the form!");
+}
+}
+</script>
+</head>
+
+<body>
+<div class="main-menu">
+	<header class="header">
+		<a href="/" class="logo"><i class="ico mdi mdi-cube-outline"></i>{{header}}</a>
+		<button type="button" class="button-close fa fa-times js__menu_close"></button>
+		<div class="user">
+			<a href="#" class="avatar"><img height="30px" width="60px" src="/static/assets/images/police2.jpg" alt=""><span class="status online"></span></a>
+			<h5 class="name"><a href="\">IM Smart</a></h5>
+			<h5 class="position">User</h5>
+			<!-- /.name -->
+						<!-- /.control-wrap -->
+		</div>
+		<!-- /.user -->
+	</header>
+	<!-- /.header -->
+	<div class="content">
+
+		<div class="navigation">
+			<h5 class="title">Navigation</h5>
+			<!-- /.title -->
+			<ul class="menu js__accordion">
+				<li >
+					<a class="waves-effect" href="/"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+				</li>
+				<li class="current">
+					<a class="waves-effect " href="/addnew"><i class="menu-icon mdi mdi-desktop-mac"></i><span>Add Item</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				<li>
+					<a class="waves-effect " href="/stocktable"><i class="menu-icon mdi mdi-cube-outline"></i><span>Stock Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li>
+					<a class="waves-effect" href="/issueregister"><i class="menu-icon mdi mdi-cube-outline"></i><span>Issued Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li>
+					<a class="waves-effect" href="/loadchart"><i class="menu-icon mdi mdi-calendar"></i><span>Load Chart</span></a>
+				</li>
+				
+				
+			</ul>
+			
+		</div>
+		<!-- /.navigation -->
+	</div>
+	<!-- /.content -->
+</div>
+<!-- /.main-menu -->
+
+<div class="fixed-navbar">
+	<div class="pull-left">
+		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+		<h1 class="page-title">{{htitle}}</h1>
+		<!-- /.page-title -->
+	</div>
+	<!-- /.pull-left -->
+	<div class="pull-right">
+		
+		<!-- /.ico-item -->
+		
+		<a href="/logout" class="ico-item mdi mdi-logout "></a>
+	</div>
+	<!-- /.pull-right -->
+</div>
+<div id="wrapper">
+	<div class="main-content">
+		<div class="row small-spacing">
+			<div class="col-xs-12">
+			
+			<div class="box-content card white">
+			         
+					<!-- /.dropdown js__dropdown -->
+					
+					<h4 class="box-title">Add New Record </h4>
+					<div class="card-content">
+					{% if messages %}
+                      {% for message in messages %}
+                      <div class="alert alert-danger alert-dismissible" role="alert"> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<strong>{{message}}</strong>  
+					</div>
+                    {% endfor %}
+                    {% endif %}
+					<p class="text-custom"> * Marked Fields are Compulsory</p>
+				
+				
+						<form    method="POST" action="/addstock"  enctype="multipart/form-data">
+							{% csrf_token %}
+						  <div class="row small-spacing">
+							<div class="col-xs-12 col-md-4 ">
+						<div class="form-group margin-bottom-20">
+						<label for="exampleInputEmail1"> <p class="text-danger">Material No. *</p></label>
+							<input type="text" name="materialno" class="form-control" id="exampleInputEmail1"  required>
+						</div>
+							</div>
+							<div class="col-xs-12 col-md-4">
+							<div class="form-group ">
+								<label for="exampleInputEmail1"><p class="text-danger">Nomenclature *</p></label>
+								<input type="text" name="nomenclature" class="form-control" id="exampleInputEmail1"  required>
+							</div>
+							</div>
+							<div class="col-xs-12 col-md-4">
+							<div class="form-group ">
+								<label for="exampleInputEmail1"><p class="text-danger">Quantity Recieved (Kg)*</p></label>
+								<input type="integer" name="quantity" class="form-control" id="exampleInputEmail1"  required>
+							</div>
+							</div>
+							
+							
+							</div>
+							
+							<hr>
+							 <div class="row small-spacing">
+							<div class="col-xs-12 col-md-2 ">
+						<div class="form-group margin-bottom-20">
+						<label for="exampleInputEmail1"> <p class="text-danger">Weight/Unit (Kg)*</p> </label>
+						<input type="integer" name="ratio" class="form-control" id="exampleInputEmail1" required >
+						</div>
+							</div>
+							
+							<div class="col-xs-12 col-md-2 ">
+						    <div class="form-group ">
+								<label for="exampleInputEmail1"><p class="text-danger">Sub Depot *</p></label>
+								<select name="subdepo" class="form-control">
+								
+								<option value="1" >SD1</option>
+								<option value="2">SD2</option>
+								<option value="3">SD3</option>
+								<option value="4">SD4</option>
+								
+							</select>
+							</div>
+							</div>
+							
+							
+							
+							</div>
+							
+							
+							
+							
+							
+							
+							<input type="button" onClick="confSubmit(this.form);" value="Submit Form" class="btn btn-sm btn btn-violet btn-bordered waves-effect waves-light">
+							
+							
+							</div>
+							
+							
+							
+							
+						
+					
+						</form>
+							
+						
+						
+						
+			
+					</div>	
+						
+					
+
+						
+		
+			
+			
+			
+			
+					
+					
+					<!-- /.card-content -->
+				</div>
+		
+			
+			
+				
+				
+			</div>
+			<!-- /.col-xs-12 -->
+
+		
+
+
+
+			
+		</div>
+	
+			
+		
+	</div>
+	<!-- /.main-content -->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--/#wrapper -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="//static/assets/script/html5shiv.min.js"></script>
+		<script src="//static/assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/assets/scripts/jquery.min.js"></script>
+	<script src="/static/assets/scripts/modernizr.min.js"></script>
+	<script src="/static/assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="/static/assets/plugin/nprogress/nprogress.js"></script>
+	<script src="/static/assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="/static/assets/plugin/waves/waves.min.js"></script>
+
+	<!-- Form Wizard -->
+	<script src="/static/assets/plugin/form-wizard/prettify.js"></script>
+	<script src="/static/assets/plugin/form-wizard/jquery.bootstrap.wizard.min.js"></script>
+	<script src="/static/assets/plugin/jquery-validation/jquery.validate.min.js"></script>
+	<script src="/static/assets/scripts/form.wizard.init.min.js"></script>
+
+	<script src="/static/assets/scripts/main.min.js"></script>
+	
+	<!-- Datepicker -->
+	<script src="/static/assets/plugin/datepicker/js/bootstrap-datepicker.min.js"></script>
+	
+		<script src="/static/assets/plugin/flexdatalist/jquery.flexdatalist.min.js"></script>
+	<script src="/static/assets/plugin/modal/remodal/remodal.min.js"></script>
+	
+</body>
+</html>

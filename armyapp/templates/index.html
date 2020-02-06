@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Home | Army Store</title>
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="/static/assets/styles/style.min.css">
+	
+	<!-- Material Design Icon -->
+	<link rel="stylesheet" href="/static/assets/fonts/material-design/css/materialdesignicons.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="/static/assets/plugin/waves/waves.min.css">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="/static/assets/plugin/sweet-alert/sweetalert.css">
+	
+	<!-- Morris Chart -->
+	<link rel="stylesheet" href="/static/assets/plugin/chart/morris/morris.css">
+
+	<!-- FullCalendar -->
+	<link rel="stylesheet" href="/static/assets/plugin/fullcalendar/fullcalendar.min.css">
+	<link rel="stylesheet" href="/static/assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
+
+</head>
+
+<body>
+<div class="main-menu">
+	<header class="header">
+		<a href="/" class="logo"><i class="ico mdi mdi-cube-outline"></i>{{header}}</a>
+		<button type="button" class="button-close fa fa-times js__menu_close"></button>
+		<div class="user">
+			<a href="#" class="avatar"><img height="30px" width="60px" src="/static/assets/images/police2.jpg" alt=""><span class="status online"></span></a>
+			<h5 class="name"><a href="\">IM Smart</a></h5>
+			<h5 class="position">User</h5>
+			<!-- /.name -->
+						<!-- /.control-wrap -->
+		</div>
+		<!-- /.user -->
+	</header>
+	<!-- /.header -->
+	<div class="content">
+
+		<div class="navigation">
+			<h5 class="title">Navigation</h5>
+			<!-- /.title -->
+			<ul class="menu js__accordion">
+				<li class="current">
+					<a class="waves-effect" href="/"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+				</li>
+				<li>
+					<a class="waves-effect " href="/addnew"><i class="menu-icon mdi mdi-desktop-mac"></i><span>Add Item</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				<li>
+					<a class="waves-effect " href="/stocktable"><i class="menu-icon mdi mdi-cube-outline"></i><span>Stock Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li>
+					<a class="waves-effect" href="/issueregister"><i class="menu-icon mdi mdi-cube-outline"></i><span>Issued Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li>
+					<a class="waves-effect" href="/loadchart"><i class="menu-icon mdi mdi-calendar"></i><span>Load Chart</span></a>
+				</li>
+				
+				
+			</ul>
+			
+		</div>
+		<!-- /.navigation -->
+	</div>
+	<!-- /.content -->
+</div>
+<!-- /.main-menu -->
+
+<div class="fixed-navbar">
+	<div class="pull-left">
+		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+		<h1 class="page-title">{{htitle}}</h1>
+		<!-- /.page-title -->
+	</div>
+	<!-- /.pull-left -->
+	<div class="pull-right">
+		
+		<!-- /.ico-item -->
+		
+		<a href="/logout" class="ico-item mdi mdi-logout "></a>
+	</div>
+	<!-- /.pull-right -->
+</div>
+
+<!-- /#message-popup -->
+<div id="wrapper">
+	<div class="main-content">
+		<div class="row small-spacing">
+			<div class="col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title">Dashboard</h4>
+					{% if messages %}
+                      {% for message in messages %}
+                      <div class="alert alert-success alert-dismissible" role="alert"> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<strong>{{message}}</strong>  
+					</div>
+                    {% endfor %}
+                    {% endif %}
+					
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-xs-12 -->
+
+			<div class="col-lg-3 col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title text-success">Total Items Held</h4>
+					
+					<!-- /.dropdown js__dropdown -->
+					<div class="content widget-stat">
+						<div id="traffic-sparkline-chart-4" class="left-content margin-top-10"></div>
+						<!-- /#traffic-sparkline-chart-2 -->
+						<div class="right-content">
+							<h2 class="counter text-success">{{tqq}}</h2>
+							<!-- /.counter -->
+							<p class="text text-success"></p>
+							<!-- /.text -->
+						</div>
+						<!-- .right-content -->
+					</div>
+					<!-- /.content widget-stat -->
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-lg-4 col-xs-12 -->
+
+			<div class="col-lg-3 col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title text-success">Total Load Held ( kg )</h4>
+					
+					<!-- /.dropdown js__dropdown -->
+					<div class="content widget-stat">
+						<div id="traffic-sparkline-chart-4" class="left-content margin-top-10"></div>
+						<!-- /#traffic-sparkline-chart-2 -->
+						<div class="right-content">
+							<h2 class="counter text-success">{{tll}} </h2>
+							<!-- /.counter -->
+							<p class="text text-success"></p>
+							<!-- /.text -->
+						</div>
+						<!-- .right-content -->
+					</div>
+					<!-- /.content widget-stat -->
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-lg-4 col-xs-12 -->
+
+			<div class="col-lg-3 col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title text-success">Load Issued ( kg )</h4>
+					
+					<!-- /.dropdown js__dropdown -->
+					<div class="content widget-stat">
+						<div id="traffic-sparkline-chart-4" class="left-content margin-top-10"></div>
+						<!-- /#traffic-sparkline-chart-2 -->
+						<div class="right-content">
+							<h2 class="counter text-success">{{tli}}</h2>
+							<!-- /.counter -->
+							<p class="text text-success"></p>
+							<!-- /.text -->
+						</div>
+						<!-- .right-content -->
+					</div>
+					<!-- /.content widget-stat -->
+				</div>
+				<!-- /.box-content -->
+			</div>
+			
+			
+			<div class="col-lg-3 col-xs-12">
+				<div class="box-content">
+					<h4 class="box-title text-success">Total Units</h4>
+					
+					<!-- /.dropdown js__dropdown -->
+					<div class="content widget-stat">
+						<div id="traffic-sparkline-chart-4" class="left-content margin-top-10"></div>
+						<!-- /#traffic-sparkline-chart-2 -->
+						<div class="right-content">
+							<h2 class="counter text-success">5</h2>
+							<!-- /.counter -->
+							<p class="text text-success"></p>
+							<!-- /.text -->
+						</div>
+						<!-- .right-content -->
+					</div>
+					<!-- /.content widget-stat -->
+				</div>
+				<!-- /.box-content -->
+			</div>
+			
+		</div>
+		<!-- /.row -->
+
+		<div class="row small-spacing">
+			<div class="col-lg-3 col-md-6 col-xs-12">
+				<div class="box-content bg-success text-white">
+				<a href="/sd/1">
+					<div class="statistics-box with-icon">
+						<i class="ico small fa fa-diamond"></i>
+						<h2 class="counter">SD 1</h2>
+						<p class="text text-white"><b>WEOPONS</b></p>
+						
+					</div>
+					</a>
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
+			<div class="col-lg-3 col-md-6 col-xs-12">
+				<div class="box-content bg-success text-white">
+				<a href="/sd/2">
+					<div class="statistics-box with-icon">
+						<i class="ico small fa fa-diamond"></i>
+						<h2 class="counter">SD 2</h2>
+						<p class="text text-white"><b>TRUCKS</b></p>
+						
+					</div>
+					</a>
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
+			<div class="col-lg-3 col-md-6 col-xs-12">
+				<div class="box-content bg-success text-white">
+				<a href="/sd/3">
+					<div class="statistics-box with-icon">
+						<i class="ico small fa fa-diamond"></i>
+						<h2 class="counter">SD 3</h2>
+						<p class="text text-white"><b>ROYAL ENFIELD</b></p>
+						
+					</div>
+					</a>
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
+			<div class="col-lg-3 col-md-6 col-xs-12">
+				<div class="box-content bg-success text-white">
+				<a href="/sd/4">
+					<div class="statistics-box with-icon">
+						<i class="ico small fa fa-diamond"></i>
+						<h2 class="counter">SD 4</h2>
+						<p class="text text-white"><b>RADIO SETS</b></p>
+						
+					</div>
+					</a>
+				</div>
+				<!-- /.box-content -->
+			</div>
+			<!-- /.col-lg-3 col-md-6 col-xs-12 -->
+		</div>
+			
+		
+	</div>
+	<!-- /.main-content -->
+</div><!--/#wrapper -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="/static/assets/script/html5shiv.min.js"></script>
+		<script src="/static/assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/assets/scripts/jquery.min.js"></script>
+	<script src="/static/assets/scripts/modernizr.min.js"></script>
+	<script src="/static/assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="/static/assets/plugin/nprogress/nprogress.js"></script>
+	<script src="/static/assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="/static/assets/plugin/waves/waves.min.js"></script>
+
+	<!-- Morris Chart -->
+	<script src="/static/assets/plugin/chart/morris/morris.min.js"></script>
+	<script src="/static/assets/plugin/chart/morris/raphael-min.js"></script>
+	<script src="/static/assets/scripts/chart.morris.init.min.js"></script>
+
+	<!-- Flot Chart -->
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.tooltip.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.categories.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.pie.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.stack.min.js"></script>
+	<script src="/static/assets/scripts/chart.flot.init.min.js"></script>
+
+	<!-- Sparkline Chart -->
+	<script src="/static/assets/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
+	<script src="/static/assets/scripts/chart.sparkline.init.min.js"></script>
+
+	<!-- FullCalendar -->
+	<script src="/static/assets/plugin/moment/moment.js"></script>
+	<script src="/static/assets/plugin/fullcalendar/fullcalendar.min.js"></script>
+	<script src="/static/assets/scripts/fullcalendar.init.js"></script>
+
+	<script src="/static/assets/scripts/main.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Load Chart</title>
+	
+	<style>
+.vl {
+  border-right: 2px solid black;
+  height: 260px;
+}
+
+
+
+
+</style>
+
+	<!-- Main Styles -->
+	<link rel="stylesheet" href="/static/assets/styles/style.min.css">
+	
+	<!-- Material Design Icon -->
+	<link rel="stylesheet" href="/static/assets/fonts/material-design/css/materialdesignicons.css">
+
+	<!-- mCustomScrollbar -->
+	<link rel="stylesheet" href="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="/static/assets/plugin/waves/waves.min.css">
+
+	<!-- Sweet Alert -->
+	<link rel="stylesheet" href="/static/assets/plugin/sweet-alert/sweetalert.css">
+	
+	<!-- Morris Chart -->
+	<link rel="stylesheet" href="/static/assets/plugin/chart/morris/morris.css">
+
+	<!-- FullCalendar -->
+	<link rel="stylesheet" href="/static/assets/plugin/fullcalendar/fullcalendar.min.css">
+	<link rel="stylesheet" href="/static/assets/plugin/fullcalendar/fullcalendar.print.css" media='print'>
+
+</head>
+
+<body>
+<div class="main-menu">
+	<header class="header">
+		<a href="/" class="logo"><i class="ico mdi mdi-cube-outline"></i>{{header}}</a>
+		<button type="button" class="button-close fa fa-times js__menu_close"></button>
+		<div class="user">
+			<a href="#" class="avatar"><img height="30px" width="60px" src="/static/assets/images/police2.jpg" alt=""><span class="status online"></span></a>
+			<h5 class="name"><a href="\">IM Smart</a></h5>
+			<h5 class="position">User</h5>
+			<!-- /.name -->
+						<!-- /.control-wrap -->
+		</div>
+		<!-- /.user -->
+	</header>
+	<!-- /.header -->
+	<div class="content">
+
+		<div class="navigation">
+			<h5 class="title">Navigation</h5>
+			<!-- /.title -->
+			<ul class="menu js__accordion">
+				<li >
+					<a class="waves-effect" href="/"><i class="menu-icon mdi mdi-view-dashboard"></i><span>Dashboard</span></a>
+				</li>
+				<li>
+					<a class="waves-effect " href="/addnew"><i class="menu-icon mdi mdi-desktop-mac"></i><span>Add Item</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				<li>
+					<a class="waves-effect " href="/stocktable"><i class="menu-icon mdi mdi-cube-outline"></i><span>Stock Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li>
+					<a class="waves-effect" href="/issueregister"><i class="menu-icon mdi mdi-cube-outline"></i><span>Issued Records</span></a>
+					
+					<!-- /.sub-menu js__content -->
+				</li>
+				
+				<li class="current">
+					<a class="waves-effect" href="/loadchart"><i class="menu-icon mdi mdi-calendar"></i><span>Load Chart</span></a>
+				</li>
+				
+				
+			</ul>
+			
+		</div>
+		<!-- /.navigation -->
+	</div>
+	<!-- /.content -->
+</div>
+<!-- /.main-menu -->
+
+<div class="fixed-navbar">
+	<div class="pull-left">
+		<button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+		<h1 class="page-title">{{htitle}}</h1>
+		<!-- /.page-title -->
+	</div>
+	<!-- /.pull-left -->
+	<div class="pull-right">
+		
+		<!-- /.ico-item -->
+		
+		<a href="/logout" class="ico-item mdi mdi-logout "></a>
+	</div>
+	<!-- /.pull-right -->
+</div>
+<div id="wrapper">
+	<div class="main-content">
+		<div class="row small-spacing">
+			<div class="col-xs-12">
+				<div class="box-content">
+					<center><h2 class="box-title"><b>Load Chart</b></h2></center>
+					<hr>
+					<div class="row small-spacing">
+					<center>
+							<div class="col-xs-12 col-md-2  ">  <h4> <b> Station</b></h4></div>
+							<div class="col-xs-12 col-md-5  ">  <h4> <b>  Recipt In Traffic</b></h4>
+
+<img  src="/static/assets/images/aigif.gif" alt="">
+
+</div>
+							<div class="col-xs-12 col-md-5  ">  <h4> <b>  Issued Stock</b></h4></div>
+					</center>
+					</div>
+					<hr>
+					{% for x in loaddata %}
+					<div class="row small-spacing">
+					<center>
+							<div class="col-xs-12 col-md-2 vl ">
+						  
+						  <br><br><br><br>
+						  <strong>{{x.unit}}</strong>
+							</div>
+							<div class="col-xs-12 col-md-5 vl">
+							
+							<div class="row small-spacing">
+							<br><br>
+					<center>
+							<div class="col-md-6 ">
+						 
+						  <br><b><p class="text-inverse">Total Load</p></b><br><b><p class="text-custom">{{x.totalload}}</p></b>
+						  <br><img src="/static/assets/images/truck.jpg" height="50px" width="100px" alt="">
+							</div>
+							<div class="col-md-6">
+							
+							<br><b><p class="text-inverse">Expected Date</p></b><br><b><p class="text-custom">{{x.expdate}}</p></b>
+							
+							</div>
+							
+							
+						</center>	
+							</div>
+							
+							
+							
+							
+							</div>
+							<div class="col-xs-12 col-md-5">
+							
+							<div class="row small-spacing">
+					       <center>
+							<div class="col-md-6 ">
+						  <h6> <b> Load</b></h6><br>
+						  <b><p class="text-success">SD1: <span class="text-inverse"> {{x.sd1}} Kg</span></p></b><br>
+						  <b><p class="text-success"> SD2:<span class="text-inverse"> {{x.sd2}} Kg</span></p></b><br>
+						  <b><p class="text-success"> SD3:<span class="text-inverse"> {{x.sd3}} Kg</span></p></b><br>
+						  <b><p class="text-success"> SD4: <span class="text-inverse"> {{x.sd4}} Kg</span></p></b>
+							</div>
+							<div class="col-md-6">
+							<h6> <b> Issue Date</b></h6><br>
+							<b><p class="text-custom">{{x.d1}}</p></b><br>
+							<b><p class="text-custom">{{x.d2}}</p></b><br>
+							<b><p class="text-custom">{{x.d3}}</p></b><br>
+							<b><p class="text-custom">{{x.d4}}</p></b>
+							
+							</div>
+							
+							
+						</center>	
+							</div>
+							</div>
+							
+						</center>	
+							</div>
+							<hr>
+					{% endfor %}
+					<br><br><br>
+					<br><br><br>
+					<br><br><br>
+					
+				</div>
+				<br><br><br>
+				<br><br><br>
+				<br><br><br>
+				<br><br>
+			</div>
+			<!-- /.col-xs-12 -->
+
+		
+
+
+
+			
+		</div>
+	
+			
+		
+	</div>
+	<!-- /.main-content -->
+</div><!--/#wrapper -->
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="/static/assets/script/html5shiv.min.js"></script>
+		<script src="/static/assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/assets/scripts/jquery.min.js"></script>
+	<script src="/static/assets/scripts/modernizr.min.js"></script>
+	<script src="/static/assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/assets/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="/static/assets/plugin/nprogress/nprogress.js"></script>
+	<script src="/static/assets/plugin/sweet-alert/sweetalert.min.js"></script>
+	<script src="/static/assets/plugin/waves/waves.min.js"></script>
+
+	<!-- Morris Chart -->
+	<script src="/static/assets/plugin/chart/morris/morris.min.js"></script>
+	<script src="/static/assets/plugin/chart/morris/raphael-min.js"></script>
+	<script src="/static/assets/scripts/chart.morris.init.min.js"></script>
+
+	<!-- Flot Chart -->
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.tooltip.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.categories.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.pie.min.js"></script>
+	<script src="/static/assets/plugin/chart/plot/jquery.flot.stack.min.js"></script>
+	<script src="/static/assets/scripts/chart.flot.init.min.js"></script>
+
+	<!-- Sparkline Chart -->
+	<script src="/static/assets/plugin/chart/sparkline/jquery.sparkline.min.js"></script>
+	<script src="/static/assets/scripts/chart.sparkline.init.min.js"></script>
+
+	<!-- FullCalendar -->
+	<script src="/static/assets/plugin/moment/moment.js"></script>
+	<script src="/static/assets/plugin/fullcalendar/fullcalendar.min.js"></script>
+	<script src="/static/assets/scripts/fullcalendar.init.js"></script>
+
+	<script src="/static/assets/scripts/main.min.js"></script>
+</body>
+</html>

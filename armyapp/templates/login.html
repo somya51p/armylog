@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<title>Login</title>
+	<link rel="stylesheet" href="/static/assets/styles/style.min.css">
+
+	<!-- Waves Effect -->
+	<link rel="stylesheet" href="/static/assets/plugin/waves/waves.min.css">
+
+</head>
+
+<body>
+
+<div id="single-wrapper"><br>
+<center>
+<h2><strong>Integrated Army Load Management & Traffic System</strong><hr></h2>
+</center>
+	<form action="/loginaction" method="POST" class="frm-single">
+	{%  csrf_token %}
+		<div class="inside">
+		   <center><img height="100px" width="100px" src="/static/assets/images/police2.jpg" alt=""></img></center>
+			<div class="title"><strong>Indian Army Ordnance Corps </strong></div>
+			<!-- /.title -->
+			<div class="frm-title">Operator Login</div>
+			{% if messages %}
+                      {% for message in messages %}
+                      <div class="alert alert-danger alert-dismissible" role="alert"> 
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<strong>{{message}}</strong>  
+					</div>
+                    {% endfor %}
+                    {% endif %}
+					
+			<!-- /.frm-title -->
+			<div class="frm-input"><input type="text" name="loginid" placeholder="ID" class="frm-inp" required><i class="fa fa-user frm-ico" ></i></div>
+			<!-- /.frm-input -->
+			<div class="frm-input"><input type="password" name="password" placeholder="Password" class="frm-inp" required><i class="fa fa-lock frm-ico"></i></div>
+			<!-- /.frm-input -->
+			<div class="clearfix margin-bottom-20">
+				<div class="pull-left">
+					
+				</div>
+				
+			</div>
+			<!-- /.clearfix -->
+			<button type="submit" class="frm-submit">Login<i class="fa fa-arrow-circle-right"></i></button>
+			<div class="row small-spacing">
+				
+				<!-- /.col-sm-12 -->
+				
+			</div>
+			<!-- /.row -->
+			
+			<div class="frm-footer">Army Ordnance Corps © 2020.</div>
+			<!-- /.footer -->
+		</div>
+		<!-- .inside -->
+	</form>
+	<!-- /.frm-single -->
+</div><!--/#single-wrapper -->
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+		<script src="/static/assets/script/html5shiv.min.js"></script>
+		<script src="/static/assets/script/respond.min.js"></script>
+	<![endif]-->
+	<!-- 
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="/static/assets/scripts/jquery.min.js"></script>
+	<script src="/static/assets/scripts/modernizr.min.js"></script>
+	<script src="/static/assets/plugin/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/static/assets/plugin/nprogress/nprogress.js"></script>
+	<script src="/static/assets/plugin/waves/waves.min.js"></script>
+
+	<script src="/static/assets/scripts/main.min.js"></script>
+</body>
+</html>
